@@ -1,0 +1,12 @@
+name: probe-edited
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+jobs:
+  show:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "event=${{ github.event_name }} action=${{ github.event.action }}"
+          echo "payload base.ref=${{ github.event.pull_request.base.ref }}"
+          echo "payload base.sha=${{ github.event.pull_request.base.sha }}"
